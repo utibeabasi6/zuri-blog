@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %} {% if form.errors %}
+<p>Your username and password were invalid. Please try again.</p>
+{% endif %}
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-4 m-4 align-items-center">
+        <form method="post" action="{% url 'blog:signup' %}">
+          {%load crispy_forms_tags%} {% csrf_token %} {{form | crispy}}
+
+          <input type="submit" value="Signup" class="btn-dark btn m-2" />
+          <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

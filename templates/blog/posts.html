@@ -1,0 +1,17 @@
+{%extends "base.html"%} {%block content%}
+<div class="jumbotron text-center"><h2>All posts</h2></div>
+<ul class="list-group p-2">
+  {%for post in posts%}
+  <div class="list-group-item">
+    <a
+      href="{%url 'blog:post_detail' pk=post.pk%}"
+      class="list-group-item-action"
+    >
+      <li class="list-unstyled"><h3>{{post.title}}</h3></li>
+      <li class="list-unstyled"><h5>By - {{post.author}}</h5></li>
+    </a>
+  </div>
+  {%endfor%}
+</ul>
+<a href="{%url 'blog:new_post'%}" class="m-3 btn btn-dark">Add post</a>
+{%endblock content%}
